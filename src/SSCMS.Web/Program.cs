@@ -2,6 +2,7 @@ using System;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Serilog;
 using SSCMS.Configuration;
 using SSCMS.Core.Utils;
@@ -30,10 +31,7 @@ namespace SSCMS.Web
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder
-                        .UseKestrel(options => { options.Limits.MaxRequestBodySize = long.MaxValue; })
-                        .UseIIS()
-                        .UseStartup<Startup>();
+                    webBuilder.UseStartup<Startup>();
                 })
                 .UseSerilog((hostingContext, loggerConfiguration) =>
                 {
