@@ -247,10 +247,12 @@ namespace SSCMS.Web
             });
 
             //app.UseHttpsRedirection();
+            app.UseStaticFiles();
 
             var options = new DefaultFilesOptions();
             options.DefaultFileNames.Clear();
             options.DefaultFileNames.Add("index.html");
+       
             app.UseDefaultFiles(options);
 
             //if (settingsManager.Containerized)
